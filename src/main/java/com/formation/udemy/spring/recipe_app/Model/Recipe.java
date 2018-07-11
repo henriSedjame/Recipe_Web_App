@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -27,6 +28,6 @@ public class Recipe {
     private Difficulty difficulty;
     private Byte[] image;
     private Notes note;
-    private java.util.Set<Ingredient> ingredients;
+    private Set<Ingredient> ingredients;
     private Category category;
 }
