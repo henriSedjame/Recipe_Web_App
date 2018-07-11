@@ -1,11 +1,13 @@
 package com.formation.udemy.spring.recipe_app.Model;
 
+import com.formation.udemy.spring.recipe_app.Model.Enumerations.Difficulty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -15,7 +17,7 @@ import java.util.Set;
 @Entity
 public class Recipe {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Version
     private int version;
@@ -25,9 +27,22 @@ public class Recipe {
     private String source;
     private String url;
     private String directions;
-    private Difficulty difficulty;
-    private Byte[] image;
-    private Notes note;
-    private Set<Ingredient> ingredients;
-    private Category category;
+  @Enumerated(value = EnumType.STRING)
+  private Difficulty difficulty;
+  @Lob
+  private Byte[] image;
+  @OneToOne(cascade = CascadeType.ALL)
+  private Notes note;
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+  private Set<Ingredient> ingredients;
+  @ManyToMany
+  @JoinTable(name = "recipe_category",
+    joinColumns = @JoinColumn(name = "recipe_id"),
+    inverseJoinColumns = @JoinColumn(name = "category_id"))
+  private Set<Category> categories;
+
+  {
+    ingredients = new HashSet<>();
+    categories = new HashSet<>();
+  }
 }

@@ -3,46 +3,52 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="423.5" y="0.0">com.formation.udemy.spring.recipe_app.Model.UnitOfMeasure</node>
-    <node x="253.0" y="168.0">com.formation.udemy.spring.recipe_app.Model.Notes</node>
-    <node x="135.0" y="168.0">com.formation.udemy.spring.recipe_app.Model.Difficulty</node>
-    <node x="146.0" y="336.0">com.formation.udemy.spring.recipe_app.Model.Recipe</node>
-    <node x="381.0" y="146.0">com.formation.udemy.spring.recipe_app.Model.Ingredient</node>
-    <node x="0.0" y="168.0">com.formation.udemy.spring.recipe_app.Model.Category</node>
+    <node x="293.49999999999994" y="0.0">com.formation.udemy.spring.recipe_app.Model.UnitOfMeasure</node>
+    <node x="0.0" y="178.0">com.formation.udemy.spring.recipe_app.Model.Notes</node>
+    <node x="129.99999999999997" y="178.0">com.formation.udemy.spring.recipe_app.Model.Difficulty</node>
+    <node x="203.25" y="356.0">com.formation.udemy.spring.recipe_app.Model.Recipe</node>
+    <node x="249.99999999999997" y="145.0">com.formation.udemy.spring.recipe_app.Model.Ingredient</node>
+    <node x="604.0" y="246.0">com.formation.udemy.spring.recipe_app.Model.Category</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="com.formation.udemy.spring.recipe_app.Model.Recipe" target="com.formation.udemy.spring.recipe_app.Model.Category">
-      <point x="-74.625" y="-158.0" />
-      <point x="170.875" y="311.0" />
-      <point x="57.5" y="311.0" />
-      <point x="0.0" y="48.0" />
-    </edge>
     <edge source="com.formation.udemy.spring.recipe_app.Model.Recipe" target="com.formation.udemy.spring.recipe_app.Model.Notes">
-      <point x="24.875" y="-158.0" />
-      <point x="270.375" y="311.0" />
-      <point x="307.0" y="311.0" />
-      <point x="0.0" y="48.0" />
+      <point x="-80.4" y="-157.5" />
+      <point x="223.35000000000002" y="336.0" />
+      <point x="55.0" y="336.0" />
+      <point x="0.0" y="47.5" />
+    </edge>
+    <edge source="com.formation.udemy.spring.recipe_app.Model.Ingredient" target="com.formation.udemy.spring.recipe_app.Model.Recipe">
+      <point x="53.75" y="80.5" />
+      <point x="411.25" y="326.0" />
+      <point x="343.95" y="326.0" />
+      <point x="40.19999999999996" y="-157.5" />
     </edge>
     <edge source="com.formation.udemy.spring.recipe_app.Model.Recipe" target="com.formation.udemy.spring.recipe_app.Model.Difficulty">
-      <point x="-24.875" y="-158.0" />
-      <point x="220.625" y="311.0" />
-      <point x="184.0" y="311.0" />
-      <point x="0.0" y="48.0" />
-    </edge>
-    <edge source="com.formation.udemy.spring.recipe_app.Model.Ingredient" target="com.formation.udemy.spring.recipe_app.Model.UnitOfMeasure">
-      <point x="0.0" y="-70.0" />
-      <point x="0.0" y="48.0" />
+      <point x="-40.20000000000002" y="-157.5" />
+      <point x="263.55" y="326.0" />
+      <point x="179.99999999999997" y="326.0" />
+      <point x="0.0" y="47.5" />
     </edge>
     <edge source="com.formation.udemy.spring.recipe_app.Model.Recipe" target="com.formation.udemy.spring.recipe_app.Model.Ingredient">
-      <point x="74.625" y="-158.0" />
-      <point x="320.125" y="311.0" />
-      <point x="487.5" y="311.0" />
-      <point x="0.0" y="70.0" />
+      <point x="-2.8421709430404007E-14" y="-157.5" />
+      <point x="-53.75" y="80.5" />
+    </edge>
+    <edge source="com.formation.udemy.spring.recipe_app.Model.Ingredient" target="com.formation.udemy.spring.recipe_app.Model.UnitOfMeasure">
+      <point x="-2.8421709430404007E-14" y="-80.5" />
+      <point x="0.0" y="47.5" />
+    </edge>
+    <edge source="com.formation.udemy.spring.recipe_app.Model.Recipe" target="com.formation.udemy.spring.recipe_app.Model.Category">
+      <point x="80.39999999999995" y="-157.5" />
+      <point x="384.15" y="336.0" />
+      <point x="543.5" y="336.0" />
+      <point x="0.0" y="47.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="556.0" y="367.0" />
-  <SelectedNodes />
+  <settings layout="Hierarchic Group" zoom="1.0" x="301.0" y="335.5" />
+  <SelectedNodes>
+    <node>com.formation.udemy.spring.recipe_app.Model.Category</node>
+  </SelectedNodes>
   <Categories>
     <Category>Fields</Category>
     <Category>Properties</Category>

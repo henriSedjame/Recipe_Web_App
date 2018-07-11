@@ -14,9 +14,9 @@ import javax.persistence.*;
 @Entity
 public class UnitOfMeasure {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Version
     private int version;
-    private String uom;
+  private String description;
 }

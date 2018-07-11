@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
@@ -13,12 +14,16 @@ import javax.persistence.*;
 @Builder
 @Entity
 public class Ingredient {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @Version
-    private int version;
-    private String description;
-    private java.math.BigDecimal amount;
-    private UnitOfMeasure unitOfMeasure;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+  @Version
+  private int version;
+  private String description;
+  private BigDecimal amount;
+  @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+  private UnitOfMeasure unitOfMeasure;
+  @ManyToOne
+  @JoinColumn(name = "recipe_id")
+  private Recipe recipe;
 }
