@@ -2,12 +2,52 @@
 <Diagram>
   <ID>JAVA</ID>
   <OriginalElement />
-  <nodes />
+  <nodes>
+    <node x="423.5" y="0.0">com.formation.udemy.spring.recipe_app.Model.UnitOfMeasure</node>
+    <node x="253.0" y="168.0">com.formation.udemy.spring.recipe_app.Model.Notes</node>
+    <node x="135.0" y="168.0">com.formation.udemy.spring.recipe_app.Model.Difficulty</node>
+    <node x="146.0" y="336.0">com.formation.udemy.spring.recipe_app.Model.Recipe</node>
+    <node x="381.0" y="146.0">com.formation.udemy.spring.recipe_app.Model.Ingredient</node>
+    <node x="0.0" y="168.0">com.formation.udemy.spring.recipe_app.Model.Category</node>
+  </nodes>
   <notes />
-  <edges />
-  <settings layout="Hierarchic Group" zoom="1.0" x="0.0" y="0.0" />
+  <edges>
+    <edge source="com.formation.udemy.spring.recipe_app.Model.Recipe" target="com.formation.udemy.spring.recipe_app.Model.Category">
+      <point x="-74.625" y="-158.0" />
+      <point x="170.875" y="311.0" />
+      <point x="57.5" y="311.0" />
+      <point x="0.0" y="48.0" />
+    </edge>
+    <edge source="com.formation.udemy.spring.recipe_app.Model.Recipe" target="com.formation.udemy.spring.recipe_app.Model.Notes">
+      <point x="24.875" y="-158.0" />
+      <point x="270.375" y="311.0" />
+      <point x="307.0" y="311.0" />
+      <point x="0.0" y="48.0" />
+    </edge>
+    <edge source="com.formation.udemy.spring.recipe_app.Model.Recipe" target="com.formation.udemy.spring.recipe_app.Model.Difficulty">
+      <point x="-24.875" y="-158.0" />
+      <point x="220.625" y="311.0" />
+      <point x="184.0" y="311.0" />
+      <point x="0.0" y="48.0" />
+    </edge>
+    <edge source="com.formation.udemy.spring.recipe_app.Model.Ingredient" target="com.formation.udemy.spring.recipe_app.Model.UnitOfMeasure">
+      <point x="0.0" y="-70.0" />
+      <point x="0.0" y="48.0" />
+    </edge>
+    <edge source="com.formation.udemy.spring.recipe_app.Model.Recipe" target="com.formation.udemy.spring.recipe_app.Model.Ingredient">
+      <point x="74.625" y="-158.0" />
+      <point x="320.125" y="311.0" />
+      <point x="487.5" y="311.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="556.0" y="367.0" />
   <SelectedNodes />
-  <Categories />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Properties</Category>
+  </Categories>
   <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
 </Diagram>
 
