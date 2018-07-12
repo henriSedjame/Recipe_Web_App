@@ -1,9 +1,6 @@
 package com.formation.udemy.spring.recipe_app.Model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -11,6 +8,8 @@ import java.math.BigDecimal;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@RequiredArgsConstructor
+@EqualsAndHashCode(of = {"id", "description"})
 @Builder
 @Entity
 public class Ingredient {
@@ -19,10 +18,15 @@ public class Ingredient {
   private Long id;
   @Version
   private int version;
+  @NonNull
+  @Column(unique = true)
   private String description;
+  @NonNull
   private BigDecimal amount;
-  @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+  @NonNull
+  @OneToOne(fetch = FetchType.EAGER)
   private UnitOfMeasure unitOfMeasure;
+  @NonNull
   @ManyToOne
   @JoinColumn(name = "recipe_id")
   private Recipe recipe;

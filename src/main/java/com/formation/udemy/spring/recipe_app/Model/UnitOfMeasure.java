@@ -1,15 +1,13 @@
 package com.formation.udemy.spring.recipe_app.Model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(of = {"id", "description"})
 @Builder
 @Entity
 public class UnitOfMeasure {
@@ -18,5 +16,6 @@ public class UnitOfMeasure {
     private Long id;
     @Version
     private int version;
-  private String description;
+    @Column(unique = true)
+    private String description;
 }

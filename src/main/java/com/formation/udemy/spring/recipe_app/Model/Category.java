@@ -1,9 +1,6 @@
 package com.formation.udemy.spring.recipe_app.Model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -12,6 +9,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(of = {"id", "description"})
 @Builder
 @Entity
 public class Category {
@@ -20,11 +18,9 @@ public class Category {
     private Long id;
     @Version
     private int version;
-  private String description;
-  @ManyToMany(mappedBy = "categories")
-  private Set<Recipe> recipes;
+    @Column(unique = true)
+    private String description;
+    @ManyToMany(mappedBy = "categories")
+    private Set<Recipe> recipes = new HashSet<>();
 
-  {
-    recipes = new HashSet<>();
-  }
 }

@@ -1,15 +1,13 @@
 package com.formation.udemy.spring.recipe_app.Model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(of = {"id", "recipeNotes"})
 @Builder
 @Entity
 public class Notes {
@@ -18,5 +16,8 @@ public class Notes {
     private Long id;
     @Version
     private int version;
-    private String note;
+    @Lob
+    private String recipeNotes;
+    @OneToOne
+    private Recipe recipe;
 }
