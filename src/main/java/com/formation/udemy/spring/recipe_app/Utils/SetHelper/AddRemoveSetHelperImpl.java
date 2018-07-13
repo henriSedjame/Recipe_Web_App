@@ -1,5 +1,6 @@
 package com.formation.udemy.spring.recipe_app.Utils.SetHelper;
 
+import com.formation.udemy.spring.recipe_app.Utils.GetterSetterMethodProvider;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.InvocationTargetException;
@@ -20,7 +21,8 @@ public class AddRemoveSetHelperImpl implements SetHelper {
   public void addToSet(Object owner, String propertyName, Object elementToAdd) {
 
     try {
-      Set property = getProperty(owner, propertyName);
+      Method getMethod = GetterSetterMethodProvider.getProperty(owner, propertyName, "get", null);
+      Set property = (Set) getMethod.invoke(owner, null);
       if (elementToAdd instanceof Collection) {
         property.addAll((Collection) elementToAdd);
       } else {
@@ -34,7 +36,8 @@ public class AddRemoveSetHelperImpl implements SetHelper {
   @Override
   public void removeFromSet(Object owner, String propertyName, Object elementToRemove) {
     try {
-      Set property = getProperty(owner, propertyName);
+      Method getMethod = GetterSetterMethodProvider.getProperty(owner, propertyName, "get", null);
+      Set property = (Set) getMethod.invoke(owner, null);
       if (elementToRemove instanceof Collection) {
         property.removeAll((Collection) elementToRemove);
       } else {
@@ -45,18 +48,4 @@ public class AddRemoveSetHelperImpl implements SetHelper {
       e.printStackTrace();
     }
   }
-
-  private Set<?> getProperty(Object owner, String propertyName) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-    Class<?> ownerClass = owner.getClass();
-    String firstCharOfPropertyName = propertyName.substring(0, 1).toUpperCase();
-    String restOfpropertyName = propertyName.substring(1);
-    String prefix = "get";
-
-    String getPropertyMethodName = prefix.concat(firstCharOfPropertyName).concat(restOfpropertyName);
-
-    Method getProperty = ownerClass.getMethod(getPropertyMethodName, null);
-
-    return (Set) getProperty.invoke(owner, null);
-  }
-
 }
