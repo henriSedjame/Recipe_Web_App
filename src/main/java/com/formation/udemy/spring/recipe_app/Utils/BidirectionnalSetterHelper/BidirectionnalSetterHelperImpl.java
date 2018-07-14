@@ -48,7 +48,7 @@ public class BidirectionnalSetterHelperImpl implements BidirectionnalSetterHelpe
 
     private Field getField(Class<?> parentClass, Class<?> childClass) {
         Field[] parentClassDeclaredFields = parentClass.getDeclaredFields();
-        Optional<Field> childFieldInParentClassOpt = Arrays.asList(parentClassDeclaredFields).stream()
+      Optional<Field> childFieldInParentClassOpt = Arrays.stream(parentClassDeclaredFields)
                 .filter(field -> field.getType().equals(childClass))
                 .findFirst();
         return childFieldInParentClassOpt.orElseThrow(() -> new RuntimeException("Attribut de type " + childClass.getSimpleName() + " introuvable dans la classe " + parentClass.getSimpleName()));

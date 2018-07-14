@@ -20,7 +20,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
+/**
+ * @Project recipe_app
+ * @Author Henri Joel SEDJAME
+ * @Date 14/07/2018
+ */
 @Component
 @Transactional
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
@@ -33,13 +37,13 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     @Qualifier("addRemoveSetHelper")
     private final SetHelper setHelper;
     @Value("${recipe.guac.directions}")
-    String guacDirections;
+    private String guacDirections;
     @Value("${recipe.guac.notes}")
-    String recipeGuacNotes;
+    private String recipeGuacNotes;
     @Value("${recipe.tacos.directions}")
-    String tacosDirections;
+    private String tacosDirections;
     @Value("${recipe.tacos.notes}")
-    String recipeTacosNotes;
+    private String recipeTacosNotes;
 
     public RecipeBootstrap(CategoryRepository categoryRepository, RecipeRepository recipeRepository, UnitOfMeasureRepository unitOfMeasureRepository, BidirectionnalSetterHelper biSetterHelper, SetHelper setHelper) {
         this.categoryRepository = categoryRepository;
@@ -52,7 +56,6 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         recipeRepository.saveAll(getRecipes());
-
     }
 
     private List<Recipe> getRecipes() {
@@ -82,7 +85,8 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         guacRecipe.setDifficulty(Difficulty.EASY);
         guacRecipe.setDirections(guacDirections);
         this.biSetterHelper.bidirectionnalSet(guacRecipe, guacNotes);
-        //get ingredients
+
+      //get ingredients
         List<Ingredient> ingredients = getGuacIngredients(eachUom, tableSpoonUom, teaSpoonUom, dashUom, guacRecipe);
 
         this.setHelper.addToSet(guacRecipe, "ingredients", ingredients);

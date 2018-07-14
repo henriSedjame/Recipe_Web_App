@@ -12,11 +12,7 @@ import java.util.Optional;
  * @Date 11/07/2018
  */
 public interface CategoryRepository extends JpaRepository<Category, Long>, QuerydslPredicateExecutor<Category> {
-    /**
-     * @param description
-     * @return
-     */
-    Optional<Category> findByDescription(String description);
 
-    boolean existsByDescription(String descrption);
+  Optional<Category> findByDescription(String description);
+
 }

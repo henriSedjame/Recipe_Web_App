@@ -8,16 +8,21 @@ import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+/**
+ * @Project recipe_app
+ * @Author Henri Joel SEDJAME
+ * @Date 14/07/2018
+ */
 @Service
 public class RecipeServiceImpl implements RecipeService {
-    private RecipeRepository recipeRepository;
+  private final RecipeRepository recipeRepository;
 
-    public RecipeServiceImpl(RecipeRepository recipeRepository) {
-        this.recipeRepository = recipeRepository;
-    }
+  public RecipeServiceImpl(RecipeRepository recipeRepository) {
+    this.recipeRepository = recipeRepository;
+  }
 
-    @Override
-    public Set<Recipe> getRecipes() {
-        return ImmutableSet.copyOf(this.recipeRepository.findAll());
-    }
+  @Override
+  public Set<Recipe> getRecipes() {
+    return ImmutableSet.copyOf(this.recipeRepository.findAll());
+  }
 }

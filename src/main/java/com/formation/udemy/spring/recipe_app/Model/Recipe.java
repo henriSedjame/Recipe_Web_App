@@ -7,6 +7,11 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * @Project recipe_app
+ * @Author Henri Joel SEDJAME
+ * @Date 14/07/2018
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,36 +19,36 @@ import java.util.Set;
 @Builder
 @Entity
 public class Recipe {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Version
-    private int version;
-    private int prepTime;
-    private int cookTime;
-    private int servings;
-    private String source;
-    private String url;
-    @Column(unique = true)
-    String description;
-    @Lob
-    private String directions;
-    @Enumerated(value = EnumType.STRING)
-    private Difficulty difficulty;
-    @Lob
-    private Byte[] image;
-    @OneToOne(cascade = CascadeType.ALL)
-    private Notes notes;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
-    private Set<Ingredient> ingredients;
-    @ManyToMany
-    @JoinTable(name = "recipe_category",
-            joinColumns = @JoinColumn(name = "recipe_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private Set<Category> categories;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+  @Version
+  private int version;
+  private int prepTime;
+  private int cookTime;
+  private int servings;
+  private String source;
+  private String url;
+  @Column(unique = true)
+  String description;
+  @Lob
+  private String directions;
+  @Enumerated(value = EnumType.STRING)
+  private Difficulty difficulty;
+  @Lob
+  private Byte[] image;
+  @OneToOne(cascade = CascadeType.ALL)
+  private Notes notes;
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+  private Set<Ingredient> ingredients;
+  @ManyToMany
+  @JoinTable(name = "recipe_category",
+    joinColumns = @JoinColumn(name = "recipe_id"),
+    inverseJoinColumns = @JoinColumn(name = "category_id"))
+  private Set<Category> categories;
 
-    {
-        ingredients = new HashSet<>();
-        categories = new HashSet<>();
-    }
+  {
+    ingredients = new HashSet<>();
+    categories = new HashSet<>();
+  }
 }

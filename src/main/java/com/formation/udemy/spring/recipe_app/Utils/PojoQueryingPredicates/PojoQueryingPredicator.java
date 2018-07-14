@@ -2,7 +2,7 @@ package com.formation.udemy.spring.recipe_app.Utils.PojoQueryingPredicates;
 
 import com.formation.udemy.spring.recipe_app.Utils.QPojoUtils.PojoUtils;
 
-public class PojoQueryingPredicator<T> {
+class PojoQueryingPredicator<T> {
     private Class className;
 
     public PojoQueryingPredicator(Class className) {

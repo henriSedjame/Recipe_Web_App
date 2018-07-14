@@ -5,6 +5,11 @@ import lombok.*;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
+/**
+ * @Project recipe_app
+ * @Author Henri Joel SEDJAME
+ * @Date 14/07/2018
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
