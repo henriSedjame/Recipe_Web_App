@@ -35,6 +35,6 @@ public class CategoryRepositoryIT {
     Optional<Category> catOptional = categoryRepository.findByDescription("American");
 
     assertTrue(catOptional.isPresent());
-    assertEquals("Americans", catOptional.get().getDescription());
+    assertEquals("Americanss", catOptional.get().getDescription());
   }
 }
