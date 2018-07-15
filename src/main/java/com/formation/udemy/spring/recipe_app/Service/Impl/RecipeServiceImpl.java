@@ -25,4 +25,10 @@ public class RecipeServiceImpl implements RecipeService {
   public Set<Recipe> getRecipes() {
     return ImmutableSet.copyOf(this.recipeRepository.findAll());
   }
+
+  @Override
+  public Recipe findRecipeById(Long id) {
+    return this.recipeRepository.findById(id)
+      .orElseThrow(() -> new RuntimeException("Recipe with id " + id + " not found"));
+  }
 }

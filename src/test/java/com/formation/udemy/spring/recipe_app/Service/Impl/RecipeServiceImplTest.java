@@ -10,6 +10,7 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
@@ -44,5 +45,31 @@ public class RecipeServiceImplTest {
 
     verify(recipeRepository, times(1)).findAll();
 
+  }
+
+  @Test
+  public void findRecipeById() {
+    Optional<Recipe> recipeOptional = Optional.ofNullable(Recipe.builder().id(1L).build());
+
+    when(recipeRepository.findById(1L)).thenReturn(recipeOptional);
+
+    Recipe recipe = recipeService.findRecipeById(1L);
+
+    verify(recipeRepository, times(1)).findById(1L);
+    Long expectedId = 1L;
+    assertEquals(expectedId, recipe.getId());
+  }
+
+  @Test(expected = RuntimeException.class)
+  public void findRecipeByIdThrowException() {
+    Optional<Recipe> recipeOptional = Optional.ofNullable(Recipe.builder().id(1L).build());
+
+    when(recipeRepository.findById(1L)).thenReturn(recipeOptional);
+
+    Recipe recipe = recipeService.findRecipeById(2L);
+
+    verify(recipeRepository, times(1)).findById(2L);
+    Long expectedId = 1L;
+    assertEquals(expectedId, recipe.getId());
   }
 }
