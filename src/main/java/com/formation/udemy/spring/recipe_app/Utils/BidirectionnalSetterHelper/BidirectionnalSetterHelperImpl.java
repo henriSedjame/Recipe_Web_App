@@ -1,6 +1,7 @@
 package com.formation.udemy.spring.recipe_app.Utils.BidirectionnalSetterHelper;
 
 import com.formation.udemy.spring.recipe_app.Utils.GetterSetterMethodProvider;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Field;
@@ -14,6 +15,7 @@ import java.util.Optional;
  * Exemple : objetA.setObjetB(objetB);
  * objetB.setObjetA(objetA);
  */
+@Slf4j
 @Component("bidirectionnalSetterHelper")
 public class BidirectionnalSetterHelperImpl implements BidirectionnalSetterHelper {
     @Override
@@ -31,18 +33,18 @@ public class BidirectionnalSetterHelperImpl implements BidirectionnalSetterHelpe
 
     }
 
-    private void setChildIntoParent(Object beanParent, Object beanChild, Class<?> parentClass, Class<?> childClass) {
+    private void setChildIntoParent(Object parent, Object child, Class<?> classParent, Class<?> classChild) {
         // Rechercher l'attribut child dans la classe parent
-        Field childFieldInParentClass = getField(parentClass, childClass);
+        Field childFieldInParentClass = getField(classParent, classChild);
         //Récupérer le nom de l'attribut
         String childFieldInParentClassName = childFieldInParentClass.getName();
         try {
             //Récupérer la méthode setter
-            Method parentBeanSetMethod = GetterSetterMethodProvider.getProperty(beanParent, childFieldInParentClassName, "set", childClass);
+            Method parentBeanSetMethod = GetterSetterMethodProvider.getProperty(parent, childFieldInParentClassName, "set", classChild);
             //Invoquer la méthode
-            parentBeanSetMethod.invoke(beanParent, beanChild);
+            parentBeanSetMethod.invoke(parent, child);
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
+           log.error(e.getMessage());
         }
     }
 

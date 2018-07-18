@@ -1,11 +1,18 @@
 package com.formation.udemy.spring.recipe_app.Utils.QPojoUtils;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.lang.reflect.Constructor;
 
+@Slf4j
 public abstract class PojoUtils {
 
     private static final String PATH_MODEL = "com.formation.spring.udemy.Model";
     private static final String PREFIX_QCLASS = "Q";
+
+    private PojoUtils() {
+        throw new IllegalStateException("PojoUtils.class");
+    }
 
     public static Object getQPojo(Class classe) {
 
@@ -34,7 +41,7 @@ public abstract class PojoUtils {
             constructor = qClasse.getConstructor(parametertypes);
             instance = constructor.newInstance(initArgs);
         } catch (Exception e) {
-            e.printStackTrace();
+           log.error(e.getMessage());
         }
 
         return instance;

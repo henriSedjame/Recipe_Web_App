@@ -1,6 +1,7 @@
 package com.formation.udemy.spring.recipe_app.Utils.SetHelper;
 
 import com.formation.udemy.spring.recipe_app.Utils.GetterSetterMethodProvider;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.InvocationTargetException;
@@ -14,6 +15,7 @@ import java.util.Set;
  * @Date 12/07/2018
  */
 
+@Slf4j
 @Component(value = "addRemoveSetHelper")
 public class AddRemoveSetHelperImpl implements SetHelper {
 
@@ -29,7 +31,7 @@ public class AddRemoveSetHelperImpl implements SetHelper {
         property.add(elementToAdd);
       }
     } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-      e.printStackTrace();
+      log.error(e.getMessage());
     }
   }
 
@@ -45,7 +47,7 @@ public class AddRemoveSetHelperImpl implements SetHelper {
       }
 
     } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-      e.printStackTrace();
+      log.error(e.getMessage());
     }
   }
 }

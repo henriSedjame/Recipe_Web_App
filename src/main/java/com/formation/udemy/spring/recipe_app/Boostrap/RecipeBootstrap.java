@@ -117,40 +117,40 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     }
 
     private List<Ingredient> getTacosIngredients(UnitOfMeasure eachUom, UnitOfMeasure tableSpoonUom, UnitOfMeasure teaSpoonUom, UnitOfMeasure pintUom, UnitOfMeasure cupsUom, Recipe tacosRecipe) {
-        Ingredient ancho_chili_powder = new Ingredient("Ancho Chili Powder", new BigDecimal(2), tableSpoonUom, tacosRecipe);
-        Ingredient dried_oregano = new Ingredient("Dried Oregano", new BigDecimal(1), teaSpoonUom, tacosRecipe);
-        Ingredient dried_cumin = new Ingredient("Dried Cumin", new BigDecimal(1), teaSpoonUom, tacosRecipe);
+        Ingredient anchoChiliPowder = new Ingredient("Ancho Chili Powder", new BigDecimal(2), tableSpoonUom, tacosRecipe);
+        Ingredient driedOregano = new Ingredient("Dried Oregano", new BigDecimal(1), teaSpoonUom, tacosRecipe);
+        Ingredient driedCumin = new Ingredient("Dried Cumin", new BigDecimal(1), teaSpoonUom, tacosRecipe);
         Ingredient sugar = new Ingredient("Sugar", new BigDecimal(1), teaSpoonUom, tacosRecipe);
         Ingredient salt = new Ingredient("Salt", new BigDecimal(".5"), teaSpoonUom, tacosRecipe);
         Ingredient garlic = new Ingredient("Clove of Garlic, Choppedr", new BigDecimal(1), eachUom, tacosRecipe);
-        Ingredient orange_zestr = new Ingredient("finely grated orange zestr", new BigDecimal(1), tableSpoonUom, tacosRecipe);
-        Ingredient orange_juice = new Ingredient("fresh-squeezed orange juice", new BigDecimal(3), tableSpoonUom, tacosRecipe);
-        Ingredient olive_oil = new Ingredient("Olive Oil", new BigDecimal(2), tableSpoonUom, tacosRecipe);
-        Ingredient boneless_chicken_thighs = new Ingredient("boneless chicken thighs", new BigDecimal(4), tableSpoonUom, tacosRecipe);
-        Ingredient small_corn_tortillasr = new Ingredient("small corn tortillasr", new BigDecimal(8), eachUom, tacosRecipe);
-        Ingredient packed_baby_arugula = new Ingredient("packed baby arugula", new BigDecimal(3), cupsUom, tacosRecipe);
+        Ingredient orangeZestr = new Ingredient("finely grated orange zestr", new BigDecimal(1), tableSpoonUom, tacosRecipe);
+        Ingredient orangeJuice = new Ingredient("fresh-squeezed orange juice", new BigDecimal(3), tableSpoonUom, tacosRecipe);
+        Ingredient oliveOil = new Ingredient("Olive Oil", new BigDecimal(2), tableSpoonUom, tacosRecipe);
+        Ingredient bonelessChickenThighs = new Ingredient("boneless chicken thighs", new BigDecimal(4), tableSpoonUom, tacosRecipe);
+        Ingredient smallCornTortillasr = new Ingredient("small corn tortillasr", new BigDecimal(8), eachUom, tacosRecipe);
+        Ingredient packedBabyArugula = new Ingredient("packed baby arugula", new BigDecimal(3), cupsUom, tacosRecipe);
         Ingredient avocados = new Ingredient("medium ripe avocados, slic", new BigDecimal(2), eachUom, tacosRecipe);
         Ingredient radish = new Ingredient("radishes, thinly sliced", new BigDecimal(4), eachUom, tacosRecipe);
         Ingredient tomatoes = new Ingredient("cherry tomatoes, halved", new BigDecimal(".5"), pintUom, tacosRecipe);
-        Ingredient red_onion = new Ingredient("red onion, thinly sliced", new BigDecimal(".25"), eachUom, tacosRecipe);
-        Ingredient roughly_chopped_cilantro = new Ingredient("Roughly chopped cilantro", new BigDecimal(4), eachUom, tacosRecipe);
+        Ingredient redOnion = new Ingredient("red onion, thinly sliced", new BigDecimal(".25"), eachUom, tacosRecipe);
+        Ingredient roughlyChoppedCilantro = new Ingredient("Roughly chopped cilantro", new BigDecimal(4), eachUom, tacosRecipe);
         Ingredient cream = new Ingredient("cup sour cream thinned with 1/4 cup milk", new BigDecimal(4), cupsUom, tacosRecipe);
         Ingredient lime = new Ingredient("lime, cut into wedges", new BigDecimal(4), eachUom, tacosRecipe);
-        return Arrays.asList(ancho_chili_powder, dried_oregano, dried_cumin, sugar, salt, garlic, orange_zestr, orange_juice, olive_oil, boneless_chicken_thighs,
-                small_corn_tortillasr, packed_baby_arugula, avocados, radish, tomatoes, red_onion, roughly_chopped_cilantro, cream, lime);
+        return Arrays.asList(anchoChiliPowder, driedOregano, driedCumin, sugar, salt, garlic, orangeZestr, orangeJuice, oliveOil, bonelessChickenThighs,
+                smallCornTortillasr, packedBabyArugula, avocados, radish, tomatoes, redOnion, roughlyChoppedCilantro, cream, lime);
     }
 
     private List<Ingredient> getGuacIngredients(UnitOfMeasure eachUom, UnitOfMeasure tableSpoonUom, UnitOfMeasure teaSpoonUom, UnitOfMeasure dashUom, Recipe guacRecipe) {
-        Ingredient ripe_avocados = new Ingredient("ripe avocados", new BigDecimal(2), eachUom, guacRecipe);
-        Ingredient kosher_salt = new Ingredient("Kosher salt", new BigDecimal(".5"), teaSpoonUom, guacRecipe);
-        Ingredient lime_juice = new Ingredient("fresh lime juice or lemon juice", new BigDecimal(2), tableSpoonUom, guacRecipe);
-        Ingredient red_onion = new Ingredient("minced red onion or thinly sliced green onion", new BigDecimal(2), tableSpoonUom, guacRecipe);
-        Ingredient serrano_chiles = new Ingredient("serrano chiles, stems and seeds removed, minced", new BigDecimal(2), eachUom, guacRecipe);
+        Ingredient ripeAvocados = new Ingredient("ripe avocados", new BigDecimal(2), eachUom, guacRecipe);
+        Ingredient kosherSalt = new Ingredient("Kosher salt", new BigDecimal(".5"), teaSpoonUom, guacRecipe);
+        Ingredient limeJuice = new Ingredient("fresh lime juice or lemon juice", new BigDecimal(2), tableSpoonUom, guacRecipe);
+        Ingredient redOnion = new Ingredient("minced red onion or thinly sliced green onion", new BigDecimal(2), tableSpoonUom, guacRecipe);
+        Ingredient serranoChiles = new Ingredient("serrano chiles, stems and seeds removed, minced", new BigDecimal(2), eachUom, guacRecipe);
         Ingredient cilantro = new Ingredient("Cilantro", new BigDecimal(2), tableSpoonUom, guacRecipe);
-        Ingredient freshly_grated_black_pepper = new Ingredient("freshly grated black pepper", new BigDecimal(2), dashUom, guacRecipe);
-        Ingredient ripe_tomato = new Ingredient("ripe tomato, seeds and pulp removed, chopped", new BigDecimal(".5"), eachUom, guacRecipe);
+        Ingredient freshlyGratedBlackPepper = new Ingredient("freshly grated black pepper", new BigDecimal(2), dashUom, guacRecipe);
+        Ingredient ripeTomato = new Ingredient("ripe tomato, seeds and pulp removed, chopped", new BigDecimal(".5"), eachUom, guacRecipe);
 
-        return Arrays.asList(ripe_avocados, kosher_salt, lime_juice, red_onion, serrano_chiles, cilantro, freshly_grated_black_pepper, ripe_tomato);
+        return Arrays.asList(ripeAvocados, kosherSalt, limeJuice, redOnion, serranoChiles, cilantro, freshlyGratedBlackPepper, ripeTomato);
     }
 
     private Category getCategory(String description) {

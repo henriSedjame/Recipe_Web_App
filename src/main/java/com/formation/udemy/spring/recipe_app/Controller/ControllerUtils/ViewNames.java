@@ -6,6 +6,10 @@ package com.formation.udemy.spring.recipe_app.Controller.ControllerUtils;
  * @Date 14/07/2018
  */
 public class ViewNames {
+
+  private ViewNames(){
+    throw new IllegalStateException("ViewNames.class");
+  }
   public static final String INDEX_VIEW = "index";
   public static final String RECIPE_DETAIL_VIEW = "recipe/detail";
 }

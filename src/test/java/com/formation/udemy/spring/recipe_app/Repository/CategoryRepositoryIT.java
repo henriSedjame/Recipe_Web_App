@@ -1,7 +1,6 @@
 package com.formation.udemy.spring.recipe_app.Repository;
 
 import com.formation.udemy.spring.recipe_app.Model.Category;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,16 +24,14 @@ public class CategoryRepositoryIT {
   @Autowired
   CategoryRepository categoryRepository;
 
-  @Before
-  public void setUp() throws Exception {
-  }
-
   @Test
   public void findByDescription() {
 
     Optional<Category> catOptional = categoryRepository.findByDescription("American");
 
     assertTrue(catOptional.isPresent());
-    assertEquals("American", catOptional.get().getDescription());
+    if (catOptional.isPresent()){
+      assertEquals("American", catOptional.get().getDescription());
+    }
   }
 }

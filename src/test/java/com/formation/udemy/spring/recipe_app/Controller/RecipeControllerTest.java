@@ -16,8 +16,7 @@ import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
  * @Project recipe_app
@@ -34,7 +33,7 @@ public class RecipeControllerTest {
   Model model;
 
   @Before
-  public void setUp() throws Exception {
+  public void setUp() {
     MockitoAnnotations.initMocks(this);
     controller = new RecipeController(recipeService);
   }
@@ -42,10 +41,13 @@ public class RecipeControllerTest {
   @Test
   public void showRecipeMockMvc() throws Exception {
     MockMvc mvc = MockMvcBuilders.standaloneSetup(controller).build();
+    Recipe recipe = Recipe.builder().id(1L).build();
 
+    when(recipeService.findRecipeById(1L)).thenReturn(recipe);
     mvc.perform(get("/recipe/detail/" + 1L))
       .andExpect(status().isOk())
-      .andExpect(view().name(ViewNames.RECIPE_DETAIL_VIEW));
+      .andExpect(view().name(ViewNames.RECIPE_DETAIL_VIEW))
+      .andExpect(model().attributeExists("recipe"));
   }
 
   @Test

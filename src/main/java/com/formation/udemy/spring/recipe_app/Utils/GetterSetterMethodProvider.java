@@ -11,6 +11,10 @@ import java.lang.reflect.Method;
  */
 public class GetterSetterMethodProvider {
 
+    private GetterSetterMethodProvider() {
+        throw new IllegalStateException("GetterSetterMethodProvider.class");
+    }
+
     public static Method getProperty(@NotNull Object instance, @NotNull String propertyName, String prefix, Class<?>... parametersType) throws NoSuchMethodException {
         //Vérifier que le préfixe est bien "get" ou "set"
         boolean goodPrefix = prefix.equals("get") || prefix.equals("set");

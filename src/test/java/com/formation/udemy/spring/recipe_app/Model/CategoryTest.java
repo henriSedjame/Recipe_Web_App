@@ -18,7 +18,7 @@ public class CategoryTest {
   Category category;
 
   @Before
-  public void setUp() throws Exception {
+  public void setUp() {
     category = Category.builder()
       .id(4L)
       .description("mexican")
