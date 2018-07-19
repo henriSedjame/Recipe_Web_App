@@ -1,5 +1,6 @@
 package com.formation.udemy.spring.recipe_app.Utils.SetHelper;
 
+import com.formation.udemy.spring.recipe_app.Utils.Constants;
 import com.formation.udemy.spring.recipe_app.Utils.GetterSetterMethodProvider;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -23,7 +24,7 @@ public class AddRemoveSetHelperImpl implements SetHelper {
   public void addToSet(Object owner, String propertyName, Object elementToAdd) {
 
     try {
-      Method getMethod = GetterSetterMethodProvider.getProperty(owner, propertyName, "get", null);
+      Method getMethod = GetterSetterMethodProvider.getProperty(owner, propertyName, Constants.GET_METHOD_PREFIX, null);
       Set property = (Set) getMethod.invoke(owner, null);
       if (elementToAdd instanceof Collection) {
         property.addAll((Collection) elementToAdd);
@@ -38,7 +39,7 @@ public class AddRemoveSetHelperImpl implements SetHelper {
   @Override
   public void removeFromSet(Object owner, String propertyName, Object elementToRemove) {
     try {
-      Method getMethod = GetterSetterMethodProvider.getProperty(owner, propertyName, "get", null);
+      Method getMethod = GetterSetterMethodProvider.getProperty(owner, propertyName, Constants.GET_METHOD_PREFIX, null);
       Set property = (Set) getMethod.invoke(owner, null);
       if (elementToRemove instanceof Collection) {
         property.removeAll((Collection) elementToRemove);

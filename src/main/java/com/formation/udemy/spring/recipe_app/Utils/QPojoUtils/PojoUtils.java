@@ -1,5 +1,6 @@
 package com.formation.udemy.spring.recipe_app.Utils.QPojoUtils;
 
+import com.formation.udemy.spring.recipe_app.Utils.Constants;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Constructor;
@@ -7,8 +8,7 @@ import java.lang.reflect.Constructor;
 @Slf4j
 public abstract class PojoUtils {
 
-    private static final String PATH_MODEL = "com.formation.spring.udemy.Model";
-    private static final String PREFIX_QCLASS = "Q";
+
 
     private PojoUtils() {
         throw new IllegalStateException("PojoUtils.class");
@@ -18,7 +18,7 @@ public abstract class PojoUtils {
 
         /*Construire le nom de la QClasse à partir de la classe d'origine*/
         String className = classe.getSimpleName();
-        String qClassName = PATH_MODEL.concat(".").concat(PREFIX_QCLASS).concat(className);
+        String qClassName = Constants.PATH_MODEL.concat(".").concat(Constants.PREFIX_QCLASS).concat(className);
 
         /*Instancier dynamiquement la QClasse
          *  1- initailiser la classe à null

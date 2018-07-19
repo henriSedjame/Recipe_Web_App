@@ -24,9 +24,9 @@ public class Recipe {
   private Long id;
   @Version
   private int version;
-  private int prepTime;
-  private int cookTime;
-  private int servings;
+  private Integer prepTime;
+  private Integer cookTime;
+  private Integer servings;
   private String source;
   private String url;
   @Column(unique = true)
