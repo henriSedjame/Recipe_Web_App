@@ -5,8 +5,6 @@ import com.formation.udemy.spring.recipe_app.Model.Commands.CategoryCommand;
 import com.formation.udemy.spring.recipe_app.Model.Commands.RecipeCommand;
 import com.formation.udemy.spring.recipe_app.Model.Enumerations.Difficulty;
 import com.formation.udemy.spring.recipe_app.Model.Recipe;
-import com.formation.udemy.spring.recipe_app.Utils.BidirectionnalSetterHelper.BidirectionnalSetterHelper;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,11 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Arrays;
 import java.util.Optional;
 import java.util.Set;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -60,7 +58,7 @@ public class BeanToBeanCommandConverterImplTest {
 
     @Test
     public void convert() {
-        RecipeCommand recipeCommand = beanToBeanCommandConverter.convert(recipe);
+        RecipeCommand recipeCommand = beanToBeanCommandConverter.convert(recipe, null);
         //Assertions
         assertEquals(recipe.getId(), recipeCommand.getId());
         assertTrue(recipe.getPrepTime() == recipeCommand.getPrepTime());
@@ -72,6 +70,7 @@ public class BeanToBeanCommandConverterImplTest {
         assertEquals(recipe.getDirections(), recipeCommand.getDirections());
         assertEquals(recipe.getDifficulty(), recipeCommand.getDifficulty());
         Set<CategoryCommand> categories = recipeCommand.getCategories();
+        assertTrue(categories.size() == 1);
         Optional<CategoryCommand> catOpt = categories.stream().findFirst();
         assertTrue(catOpt.isPresent());
         assertTrue(catOpt.get().getDescription().equals(DESCRIPTION));
