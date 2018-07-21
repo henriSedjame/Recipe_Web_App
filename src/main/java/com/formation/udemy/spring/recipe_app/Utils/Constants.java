@@ -1,6 +1,7 @@
 package com.formation.udemy.spring.recipe_app.Utils;
 
 public class Constants {
+  public static final String APP_PATH = "com.formation.udemy.spring.recipe_app";
     public static final String PATH_MODEL = "com.formation.udemy.spring.recipe_app.Model";
     public static final String PATH_COMMANDS_MODEL = "com.formation.udemy.spring.recipe_app.Model.Commands";
     public static final String PREFIX_QCLASS = "Q";
