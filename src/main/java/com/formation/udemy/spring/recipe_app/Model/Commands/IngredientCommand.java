@@ -1,6 +1,5 @@
 package com.formation.udemy.spring.recipe_app.Model.Commands;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,4 +14,5 @@ public class IngredientCommand {
     private String description;
     private BigDecimal amount;
     private UnitOfMeasureCommand unitOfMeasure;
+  private RecipeCommand recipe;
 }
