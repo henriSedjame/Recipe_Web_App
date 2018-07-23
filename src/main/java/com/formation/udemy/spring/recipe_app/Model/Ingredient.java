@@ -15,6 +15,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @RequiredArgsConstructor
 @EqualsAndHashCode(of = {"id", "description"})
+@ToString(exclude = {"recipe"})
 @Builder
 @Entity
 public class Ingredient {

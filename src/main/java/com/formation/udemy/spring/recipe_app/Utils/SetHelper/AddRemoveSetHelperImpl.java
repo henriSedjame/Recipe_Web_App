@@ -24,8 +24,8 @@ public class AddRemoveSetHelperImpl implements SetHelper {
   public void addToSet(Object owner, String propertyName, Object elementToAdd) {
 
     try {
-      Method getMethod = GetterSetterMethodProvider.getProperty(owner, propertyName, Constants.GET_METHOD_PREFIX, null);
-      Set property = (Set) getMethod.invoke(owner, null);
+      Method getMethod = GetterSetterMethodProvider.getProperty(owner, propertyName, Constants.GET_METHOD_PREFIX);
+      Set property = (Set) getMethod.invoke(owner);
       if (elementToAdd instanceof Collection) {
         property.addAll((Collection) elementToAdd);
       } else {

@@ -16,6 +16,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = {"id", "description"})
+@ToString(exclude = {"notes", "ingredients", "categories"})
 @Builder
 @Entity
 public class Recipe {
@@ -43,7 +44,7 @@ public class Recipe {
   private Set<Ingredient> ingredients = new HashSet<>();
   @ManyToMany
   @JoinTable(name = "recipe_category",
-    joinColumns = @JoinColumn(name = "recipe_id"),
-    inverseJoinColumns = @JoinColumn(name = "category_id"))
+          joinColumns = @JoinColumn(name = "recipe_id"),
+          inverseJoinColumns = @JoinColumn(name = "category_id"))
   private Set<Category> categories = new HashSet<>();
 }

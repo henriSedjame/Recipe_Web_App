@@ -13,6 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = {"id", "recipeNotes"})
+@ToString(exclude = {"recipe"})
 @Builder
 @Entity
 public class Notes {
