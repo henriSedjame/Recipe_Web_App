@@ -1,11 +1,17 @@
 package com.formation.udemy.spring.recipe_app.Service.Impl;
 
+import com.formation.udemy.spring.recipe_app.Model.Commands.RecipeCommand;
 import com.formation.udemy.spring.recipe_app.Model.Recipe;
 import com.formation.udemy.spring.recipe_app.Repository.RecipeRepository;
 import com.formation.udemy.spring.recipe_app.Service.RecipeService;
+import com.formation.udemy.spring.recipe_app.Utils.Converters.BeanToBeanConverter;
 import com.google.common.collect.ImmutableSet;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 
 /**
@@ -14,11 +20,15 @@ import java.util.Set;
  * @Date 14/07/2018
  */
 @Service
+@Slf4j
 public class RecipeServiceImpl implements RecipeService {
   private final RecipeRepository recipeRepository;
+  @Qualifier("beanConverter")
+  private final BeanToBeanConverter beanToBeanConverter;
 
-  public RecipeServiceImpl(RecipeRepository recipeRepository) {
+  public RecipeServiceImpl(RecipeRepository recipeRepository, BeanToBeanConverter beanToBeanConverter) {
     this.recipeRepository = recipeRepository;
+    this.beanToBeanConverter = beanToBeanConverter;
   }
 
   @Override
@@ -30,5 +40,23 @@ public class RecipeServiceImpl implements RecipeService {
   public Recipe findRecipeById(Long id) {
     return this.recipeRepository.findById(id)
       .orElseThrow(() -> new RuntimeException("Recipe with id " + id + " not found"));
+  }
+
+  @Override
+  @Transactional
+  public RecipeCommand saveRecipeCommand(RecipeCommand command) {
+    Recipe detachedRecipe;
+    RecipeCommand savedCommand = null;
+
+    try {
+      detachedRecipe = (Recipe) this.beanToBeanConverter.convert(command);
+      Recipe savedRecipe = this.recipeRepository.save(detachedRecipe);
+      savedCommand = (RecipeCommand) this.beanToBeanConverter.convert(savedRecipe);
+
+    } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+      log.error(e.getMessage(), e.getCause());
+    }
+
+    return savedCommand;
   }
 }

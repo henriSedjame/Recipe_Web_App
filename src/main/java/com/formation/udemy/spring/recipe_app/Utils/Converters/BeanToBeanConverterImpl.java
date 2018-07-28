@@ -18,7 +18,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
 
-@Component
+@Component("beanConverter")
 @Slf4j
 public class BeanToBeanConverterImpl implements BeanToBeanConverter {
 

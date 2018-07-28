@@ -10,6 +10,9 @@ public class ViewNames {
   private ViewNames(){
     throw new IllegalStateException("ViewNames.class");
   }
+
+  public static final String REDIRECT = "redirect:/";
   public static final String INDEX_VIEW = "index";
   public static final String RECIPE_DETAIL_VIEW = "recipe/detail";
+  public static final String RECIPE_NEW = "recipe/recipeForm";
 }

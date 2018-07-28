@@ -1,5 +1,6 @@
 package com.formation.udemy.spring.recipe_app.Service;
 
+import com.formation.udemy.spring.recipe_app.Model.Commands.RecipeCommand;
 import com.formation.udemy.spring.recipe_app.Model.Recipe;
 
 import java.util.Set;
@@ -10,7 +11,10 @@ import java.util.Set;
  * @Date 14/07/2018
  */
 public interface RecipeService {
+
   Set<Recipe> getRecipes();
 
   Recipe findRecipeById(Long id);
+
+  RecipeCommand saveRecipeCommand(RecipeCommand command);
 }

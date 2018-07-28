@@ -1,9 +1,7 @@
 package com.formation.udemy.spring.recipe_app.Model.Commands;
 
 import com.formation.udemy.spring.recipe_app.Model.Enumerations.Difficulty;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,6 +9,8 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class RecipeCommand {
   private Long id;
   private String description;

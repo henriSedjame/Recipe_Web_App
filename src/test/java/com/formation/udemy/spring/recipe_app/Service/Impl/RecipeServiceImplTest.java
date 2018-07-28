@@ -1,13 +1,16 @@
 package com.formation.udemy.spring.recipe_app.Service.Impl;
 
+import com.formation.udemy.spring.recipe_app.Model.Commands.RecipeCommand;
 import com.formation.udemy.spring.recipe_app.Model.Recipe;
 import com.formation.udemy.spring.recipe_app.Repository.RecipeRepository;
 import com.formation.udemy.spring.recipe_app.Service.RecipeService;
+import com.formation.udemy.spring.recipe_app.Utils.Converters.BeanToBeanConverter;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -27,10 +30,13 @@ public class RecipeServiceImplTest {
   @Mock
   RecipeRepository recipeRepository;
 
+  @Mock
+  BeanToBeanConverter beanToBeanConverter;
+
   @Before
   public void setUp(){
     MockitoAnnotations.initMocks(this);
-    recipeService = new RecipeServiceImpl(recipeRepository);
+    recipeService = new RecipeServiceImpl(recipeRepository, beanToBeanConverter);
   }
 
   @Test
@@ -71,5 +77,24 @@ public class RecipeServiceImplTest {
     verify(recipeRepository, times(1)).findById(2L);
     Long expectedId = 1L;
     assertEquals(expectedId, recipe.getId());
+  }
+
+  @Test
+  public void saveRecipeCommand() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+    RecipeCommand command = RecipeCommand.builder().id(1L).build();
+    Recipe recipe = Recipe.builder().id(2L).build();
+
+    when(beanToBeanConverter.convert(any(RecipeCommand.class))).thenReturn(recipe);
+    when(beanToBeanConverter.convert(any(Recipe.class))).thenReturn(command);
+    when(recipeRepository.save(any())).thenReturn(recipe);
+
+    RecipeCommand savedCommand = recipeService.saveRecipeCommand(command);
+
+    verify(beanToBeanConverter, times(2)).convert(any());
+    verify(recipeRepository, times(1)).save(recipe);
+
+    Long expectedId = 1L;
+    assertEquals(expectedId, savedCommand.getId());
+
   }
 }
