@@ -5,10 +5,7 @@ import com.formation.udemy.spring.recipe_app.Model.Commands.RecipeCommand;
 import com.formation.udemy.spring.recipe_app.Service.RecipeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 
@@ -29,7 +26,7 @@ public class RecipeController {
     this.recipeService = recipeService;
   }
 
-  @RequestMapping("/recipe/detail/{id}")
+  @GetMapping("/recipe/detail/{id}")
   public String showRecipe(Model model, @PathVariable("id") Long id) {
 
     model.addAttribute("recipe", recipeService.findRecipeById(id));

@@ -62,14 +62,17 @@
                 </div>
                 <div class="col-md-3 form-group">
                   <label>Difficulty:</label>
-                  <select class="form-control">
-                    <option>Easy</option>
-                    <option>Medium</option>
-                    <option>Hard</option>
+                  <select class="form-control" th:field="*{difficulty}">
+                    <option
+                      th:each=" diff : ${T(com.formation.udemy.spring.recipe_app.Model.Enumerations.Difficulty).values()}"
+                      th:value="${diff.name()}"
+                      th:text="${diff.name()}">
+                      val
+                    </option>
+
                   </select>
                 </div>
-              </div>
-              <div class="row">
+
                 <div class="col-md-3 form-group">
                   <label>Servings:</label>
                   <input type="text" class="form-control" th:field="*{servings}"/>

@@ -43,6 +43,19 @@ public class RecipeServiceImpl implements RecipeService {
   }
 
   @Override
+  public RecipeCommand findRecipeCommandByid(Long id) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+
+    Recipe recipe = findRecipeById(id);
+    RecipeCommand command = (RecipeCommand) beanToBeanConverter.convert(recipe);
+    return command;
+  }
+
+  @Override
+  public Recipe saveRecipe(Recipe recipe) {
+    return recipeRepository.save(recipe);
+  }
+
+  @Override
   @Transactional
   public RecipeCommand saveRecipeCommand(RecipeCommand command) {
     Recipe detachedRecipe;

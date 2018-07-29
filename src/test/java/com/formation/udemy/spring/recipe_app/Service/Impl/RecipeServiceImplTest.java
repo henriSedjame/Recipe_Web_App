@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 import static org.mockito.Mockito.*;
 
 /**
@@ -96,5 +97,24 @@ public class RecipeServiceImplTest {
     Long expectedId = 1L;
     assertEquals(expectedId, savedCommand.getId());
 
+  }
+
+  @Test
+  public void findRecipeCommandByid() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+    Optional<Recipe> recipeOptional = Optional.ofNullable(Recipe.builder().id(1L).build());
+
+    RecipeCommand converted = RecipeCommand.builder().id(2L).build();
+
+    when(recipeRepository.findById(1L)).thenReturn(recipeOptional);
+
+    when(beanToBeanConverter.convert(any(Recipe.class))).thenReturn(converted);
+
+    RecipeCommand command = recipeService.findRecipeCommandByid(1L);
+
+    verify(recipeRepository, times(1)).findById(1L);
+
+    verify(beanToBeanConverter, times(1)).convert(any());
+
+    assertSame(2L, command.getId());
   }
 }
