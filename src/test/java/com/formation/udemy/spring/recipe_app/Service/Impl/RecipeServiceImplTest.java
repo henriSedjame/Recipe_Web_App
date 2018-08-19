@@ -1,5 +1,6 @@
 package com.formation.udemy.spring.recipe_app.Service.Impl;
 
+import com.formation.udemy.spring.recipe_app.Exceptions.NotFoundException;
 import com.formation.udemy.spring.recipe_app.Model.Commands.RecipeCommand;
 import com.formation.udemy.spring.recipe_app.Model.Recipe;
 import com.formation.udemy.spring.recipe_app.Repository.RecipeRepository;
@@ -67,7 +68,7 @@ public class RecipeServiceImplTest {
     assertEquals(expectedId, recipe.getId());
   }
 
-  @Test(expected = RuntimeException.class)
+  @Test(expected = NotFoundException.class)
   public void findRecipeByIdThrowException() {
     Optional<Recipe> recipeOptional = Optional.ofNullable(Recipe.builder().id(1L).build());
 

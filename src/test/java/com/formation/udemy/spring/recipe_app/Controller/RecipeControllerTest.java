@@ -1,6 +1,7 @@
 package com.formation.udemy.spring.recipe_app.Controller;
 
 import com.formation.udemy.spring.recipe_app.Controller.ControllerUtils.ViewNames;
+import com.formation.udemy.spring.recipe_app.Exceptions.NotFoundException;
 import com.formation.udemy.spring.recipe_app.Model.Commands.RecipeCommand;
 import com.formation.udemy.spring.recipe_app.Model.Recipe;
 import com.formation.udemy.spring.recipe_app.Service.RecipeService;
@@ -40,7 +41,9 @@ public class RecipeControllerTest {
   public void setUp() {
     MockitoAnnotations.initMocks(this);
     controller = new RecipeController(recipeService);
-    mvc = MockMvcBuilders.standaloneSetup(controller).build();
+    mvc = MockMvcBuilders.standaloneSetup(controller)
+      .setControllerAdvice(new ControllerExceptionHandler())
+      .build();
   }
 
   @Test
@@ -74,6 +77,7 @@ public class RecipeControllerTest {
       .contentType(MediaType.APPLICATION_FORM_URLENCODED)
       .param("id", "")
       .param("description", "some string")
+      .param("directions", "directions")
     )
       .andExpect(status().is3xxRedirection())
       .andExpect(view().name(ViewNames.REDIRECT + ViewNames.RECIPE_DETAIL_VIEW + "/" + 2L));
@@ -121,5 +125,23 @@ public class RecipeControllerTest {
   @Test
   public void saveOrUpdate() {
 
+  }
+
+  @Test
+  public void testGetRecipeNotFound() throws Exception {
+
+    when(recipeService.findRecipeById(anyLong())).thenThrow(NotFoundException.class);
+
+    mvc.perform(get("/recipe/detail/" + 1L))
+      .andExpect(status().isNotFound())
+      .andExpect(view().name(ViewNames.ERROR_PAGE_NOT_FOUND));
+  }
+
+  @Test
+  public void testGetNumberFormatException() throws Exception {
+
+    mvc.perform(get("/recipe/detail/kjhh"))
+      .andExpect(status().isBadRequest())
+      .andExpect(view().name(ViewNames.ERROR_PAGE_BAD_REQUEST));
   }
 }
