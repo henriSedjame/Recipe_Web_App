@@ -22,11 +22,11 @@ public class BidirectionnalSetterHelperImplTest {
   @Before
   public void setUp() throws Exception {
     recipe = Recipe.builder()
-            .id(1L)
+            .id("1")
             .build();
 
     notes = Notes.builder()
-            .id(2L)
+            .id("2")
             .build();
   }
 

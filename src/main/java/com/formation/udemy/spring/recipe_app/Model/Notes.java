@@ -1,8 +1,9 @@
 package com.formation.udemy.spring.recipe_app.Model;
 
 import lombok.*;
-
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * @Project recipe_app
@@ -15,15 +16,11 @@ import javax.persistence.*;
 @EqualsAndHashCode(of = {"id", "recipeNotes"})
 @ToString(exclude = {"recipe"})
 @Builder
-@Entity
+@Document
 public class Notes {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-  @Version
-  private int version;
-  @Lob
+  private String id;
   private String recipeNotes;
-  @OneToOne
+  @DBRef
   private Recipe recipe;
 }

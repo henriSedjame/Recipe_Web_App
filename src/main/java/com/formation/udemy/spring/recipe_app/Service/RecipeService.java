@@ -15,9 +15,9 @@ public interface RecipeService {
 
   Set<Recipe> getRecipes();
 
-  Recipe findRecipeById(Long id);
+  Recipe findRecipeById(String id);
 
-  RecipeCommand findRecipeCommandByid(Long id) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException;
+  RecipeCommand findRecipeCommandByid(String id) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException;
 
   Recipe saveRecipe(Recipe recipe);
 

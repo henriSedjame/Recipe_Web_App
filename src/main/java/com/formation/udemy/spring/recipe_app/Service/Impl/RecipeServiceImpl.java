@@ -38,13 +38,13 @@ public class RecipeServiceImpl implements RecipeService {
   }
 
   @Override
-  public Recipe findRecipeById(Long id) {
+  public Recipe findRecipeById(String id) {
     return this.recipeRepository.findById(id)
       .orElseThrow(() -> new NotFoundException("Recipe with id " + id + " not found"));
   }
 
   @Override
-  public RecipeCommand findRecipeCommandByid(Long id) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+  public RecipeCommand findRecipeCommandByid(String id) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
 
     Recipe recipe = findRecipeById(id);
     return (RecipeCommand) beanToBeanConverter.convert(recipe);

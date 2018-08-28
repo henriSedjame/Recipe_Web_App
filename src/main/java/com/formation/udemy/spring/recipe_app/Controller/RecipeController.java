@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 /**
@@ -20,7 +19,7 @@ import javax.validation.Valid;
  */
 
 @Controller
-@Transactional
+
 @Slf4j
 public class RecipeController {
 
@@ -31,7 +30,7 @@ public class RecipeController {
   }
 
   @GetMapping("/recipe/detail/{id}")
-  public String showRecipe(Model model, @PathVariable("id") Long id) {
+  public String showRecipe(Model model, @PathVariable("id") String id) {
 
     model.addAttribute("recipe", recipeService.findRecipeById(id));
 

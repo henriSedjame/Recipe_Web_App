@@ -22,16 +22,16 @@ public class AddRemoveSetHelperImplTest {
   public void setUp() throws Exception {
     setHelper = new AddRemoveSetHelperImpl();
     recipe = Recipe.builder()
-            .id(1L)
+            .id("1")
             .categories(new HashSet<>())
             .build();
 
     category1 = Category.builder()
-            .id(2L)
+            .id("2")
             .build();
 
     category2 = Category.builder()
-            .id(3L)
+            .id("3")
             .build();
   }
 

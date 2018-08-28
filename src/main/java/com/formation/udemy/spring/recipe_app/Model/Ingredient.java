@@ -1,8 +1,10 @@
 package com.formation.udemy.spring.recipe_app.Model;
 
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
 
 /**
@@ -17,23 +19,18 @@ import java.math.BigDecimal;
 @EqualsAndHashCode(of = {"id", "description"})
 @ToString(exclude = {"recipe"})
 @Builder
-@Entity
+@Document
 public class Ingredient {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-  @Version
-  private int version;
+  private String id;
   @NonNull
-  @Column(unique = true)
   private String description;
   @NonNull
   private BigDecimal amount;
   @NonNull
-  @OneToOne
+  @DBRef
   private UnitOfMeasure unitOfMeasure;
   @NonNull
-  @ManyToOne
-  @JoinColumn(name = "recipe_id")
+  @DBRef
   private Recipe recipe;
 }

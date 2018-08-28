@@ -1,8 +1,10 @@
 package com.formation.udemy.spring.recipe_app.Model;
 
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,15 +19,11 @@ import java.util.Set;
 @EqualsAndHashCode(of = {"id", "description"})
 @ToString(exclude = {"recipes"})
 @Builder
-@Entity
+@Document
 public class Category {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-  @Version
-  private int version;
-  @Column(unique = true)
+  private String id;
   private String description;
-  @ManyToMany(mappedBy = "categories")
+  @DBRef
   private Set<Recipe> recipes = new HashSet<>();
 }

@@ -46,8 +46,8 @@ public class IndexControllerTest {
   public void getIndexPage() {
 
     Set<Recipe> recipes = new HashSet<>();
-    Recipe recipe1 = Recipe.builder().id(1L).build();
-    Recipe recipe2 = Recipe.builder().id(2L).build();
+    Recipe recipe1 = Recipe.builder().id("1").build();
+    Recipe recipe2 = Recipe.builder().id("2").build();
     recipes.add(recipe1);
     recipes.add(recipe2);
 

@@ -29,7 +29,7 @@ public class ImageServiceImpl implements ImageService {
   }
 
   @Override
-  public void saveImageFile(Long id, MultipartFile file) {
+  public void saveImageFile(String id, MultipartFile file) {
     try {
       Byte[] bytes = fileUtils.getBytes(file);
       Recipe recipe = recipeService.findRecipeById(id);

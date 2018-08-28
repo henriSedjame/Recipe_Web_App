@@ -20,7 +20,7 @@ public class CategoryTest {
   @Before
   public void setUp() {
     category = Category.builder()
-      .id(4L)
+            .id("4")
       .description("mexican")
       .recipes(new HashSet<>())
       .build();
@@ -28,7 +28,7 @@ public class CategoryTest {
 
   @Test
   public void getId() {
-    Long expectedId = 4L;
+    String expectedId = "4";
     assertEquals(expectedId, category.getId());
   }
 
