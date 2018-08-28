@@ -30,7 +30,7 @@ public class Ingredient {
   @NonNull
   private BigDecimal amount;
   @NonNull
-  @OneToOne(fetch = FetchType.EAGER)
+  @OneToOne
   private UnitOfMeasure unitOfMeasure;
   @NonNull
   @ManyToOne

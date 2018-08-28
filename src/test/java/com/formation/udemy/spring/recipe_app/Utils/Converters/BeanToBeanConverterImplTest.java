@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
@@ -42,6 +43,7 @@ public class BeanToBeanConverterImplTest {
   private BeanToBeanConverter beanToBeanConverter;
 
   @Before
+  @Transactional
   public void setUp() {
     recipe = new Recipe();
     recipe.setId(ID);
@@ -91,6 +93,7 @@ public class BeanToBeanConverterImplTest {
   }
 
   @Test
+  @Transactional
   public void convert() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
     RecipeCommand recipeCommand = (RecipeCommand) beanToBeanConverter.convert(recipe);
 
