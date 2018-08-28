@@ -1,5 +1,6 @@
 package com.formation.udemy.spring.recipe_app.Service.Impl;
 
+import com.formation.udemy.spring.recipe_app.Exceptions.NotFoundException;
 import com.formation.udemy.spring.recipe_app.Model.Commands.RecipeCommand;
 import com.formation.udemy.spring.recipe_app.Model.Recipe;
 import com.formation.udemy.spring.recipe_app.Repository.RecipeRepository;
@@ -39,15 +40,14 @@ public class RecipeServiceImpl implements RecipeService {
   @Override
   public Recipe findRecipeById(Long id) {
     return this.recipeRepository.findById(id)
-      .orElseThrow(() -> new RuntimeException("Recipe with id " + id + " not found"));
+      .orElseThrow(() -> new NotFoundException("Recipe with id " + id + " not found"));
   }
 
   @Override
   public RecipeCommand findRecipeCommandByid(Long id) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
 
     Recipe recipe = findRecipeById(id);
-    RecipeCommand command = (RecipeCommand) beanToBeanConverter.convert(recipe);
-    return command;
+    return (RecipeCommand) beanToBeanConverter.convert(recipe);
   }
 
   @Override
