@@ -67,7 +67,6 @@
       <scope>provided</scope>
     </dependency>
 
-
     <dependency>
       <groupId>com.querydsl</groupId>
       <artifactId>querydsl-mongodb</artifactId>
@@ -79,6 +78,7 @@
         </exclusion>
       </exclusions>
     </dependency>
+
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
@@ -91,14 +91,6 @@
       <artifactId>commons-lang3</artifactId>
       <version>3.7</version>
     </dependency>
-
-
-    <!-- webjars dependency for BootStrap-->
-    <!--<dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>bootstrap</artifactId>
-      <version>3.3.7-1</version>
-    </dependency>-->
 
   </dependencies>
 
@@ -140,7 +132,6 @@
           </execution>
         </executions>
       </plugin>
-
 
       <!-- Plugin pour queryDSL -->
       <plugin>
@@ -205,13 +196,14 @@
           </execution>
           <execution>
             <id>jacoco-site</id>
-            <phase>test</phase>
+            <phase>verify</phase>
             <goals>
               <goal>report</goal>
             </goals>
           </execution>
         </executions>
       </plugin>
+
     </plugins>
   </build>
 

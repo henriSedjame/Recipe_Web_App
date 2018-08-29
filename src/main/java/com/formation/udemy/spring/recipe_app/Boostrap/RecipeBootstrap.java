@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ import java.util.List;
  * @Author Henri Joel SEDJAME
  * @Date 14/07/2018
  */
-//@Component
+@Component
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
     private final CategoryRepository categoryRepository;
@@ -53,12 +54,6 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
       //recipeRepository.saveAll(getRecipes());
-
-      Category category = Category.builder()
-              .description("Mexican")
-              .build();
-      categoryRepository.deleteAll();
-      categoryRepository.save(category);
     }
 
     private List<Recipe> getRecipes() {
